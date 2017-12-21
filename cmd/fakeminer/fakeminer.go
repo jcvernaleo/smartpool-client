@@ -6,9 +6,11 @@ import (
 
 const (
 	farmUrl = "localhost:1633"
+	id      = "/:testminer/"
 )
 
 func main() {
-	fmt.Println("Connecting to", farmUrl)
+	fmt.Println("Connecting to", farmUrl+id)
+
 	return
 }
