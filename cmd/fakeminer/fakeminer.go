@@ -34,8 +34,23 @@ func main() {
 
 	fmt.Println(fakeSubmit.Method, fakeSubmit.Version, string(fakeSubmit.Id), string(fakeSubmit.Payload))
 
-	//eth_submitHashrate 2.0 1 ["0x0","0xd1704618c93ff275e81ce2e224ca50f79199214c64cb06044f8f764409ef5db3"]
-	//eth_getWork 2.0 1
+	fakeGetWork := jsonRequest{
+		Method:  m,
+		Version: v,
+		Id:      i,
+	}
+
+	fakeSubmitRate := jsonRequest{
+		Method:  m,
+		Version: v,
+		Id:      i,
+		Payload: p,
+	}
+
+	p = json.RawMessage(`["0x0","0xd1704618c93ff275e81ce2e224ca50f79199214c64cb06044f8f764409ef5db3"]`)
+
+	fmt.Println(fakeGetWork)
+	fmt.Println(string(fakeSubmitRate.Payload))
 
 	return
 }
