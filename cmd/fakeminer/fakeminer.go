@@ -1,8 +1,10 @@
 package main
 
 import (
+	"bufio"
 	"encoding/json"
 	"fmt"
+	"net"
 )
 
 type jsonRequest struct {
@@ -51,6 +53,14 @@ func main() {
 
 	fmt.Println(fakeGetWork)
 	fmt.Println(string(fakeSubmitRate.Payload))
+
+	conn, err := net.Dial("tcp", farmUrl)
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	status, err := bufio.NewReader(conn).ReadString('\n')
+	fmt.Println(status)
 
 	return
 }
